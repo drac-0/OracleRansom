@@ -27,22 +27,23 @@ def filecol(fdlist, fol1, file) :
 def filecol2(folpath,filepath) :
 	for folder in folpath :
 		child = os.listdir(folder)
-		if len(child) == 0 : #remove empty folder from list
-			folpath.remove(folder)
-			print(folder, "removed")
 
-		for content in child :
-			abpath = f'{os.path.abspath(folder)}/{content}'
+        try : 
+            for content in child :
+                abpath = f'{os.path.abspath(folder)}/{content}'
 
-			if "filecol.py" in abpath :
-				print("DONT MESS WITH IT")
-				continue
+                if "filecol.py" in abpath :
+                    print("DONT MESS WITH IT")
+                    continue
 
-			if os.path.isfile(abpath) :
-				filepath.append(abpath)
+                if os.path.isfile(abpath) :
+                    filepath.append(abpath)
 
-			else :
-				folpath.append(abpath)
+                else :
+                    folpath.append(abpath)
+
+        except:
+            print("UNKOWN")
 
 #i think the reason why i don't need a recursive function is because i append the folder path and it makes everysingle folder in this machine would be added 
 #how lucky i am :DD
