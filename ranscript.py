@@ -25,26 +25,30 @@ filepath = []
 
 
 def filecol(fdlist, fol1, file) :
-	for path in fdlist :
-		child = os.listdir(path)
-		print(child)
+	try:
+		for path in fdlist :
+			child = os.listdir(path)
+			print(child)
 
 
-		for item in child :
-			abpath = f'{os.path.abspath(path)}/{item}'
+			for item in child :
+				abpath = f'{os.path.abspath(path)}/{item}'
 
-			if "NAMA FILE YANG INGIN DI SKIP, KALAU ADA" == item :
-				print("DONT")
-				continue
+				if "NAMA FILE YANG INGIN DI SKIP, KALAU ADA" == item :
+					print("DONT")
+					continue
 
 
-			if os.path.isfile(abpath):
-				print("list file", file)
-				file.append(abpath)
+				if os.path.isfile(abpath):
+					print("list file", file)
+					file.append(abpath)
 
-			else :
-				print("list folder", fol1)
-				fol1.append(abpath)
+				else :
+					print("list folder", fol1)
+					fol1.append(abpath)
+
+	except:
+		pass
 	filecol2(fol1,file)
 
 # maybe i should assemble both of the filecol func, but idk how :P
