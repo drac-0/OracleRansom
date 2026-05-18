@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import os
+from os.path import isdir
 
 a = "/home"
 os.chdir(a)
@@ -30,13 +31,10 @@ def filecol2(folpath,filepath) :
 			child = os.listdir(folder)
 			for content in child :
 				abpath = f'{os.path.abspath(folder)}/{content}'
-				if "filecol.py" in abpath :
-					print("DONT MESS WITH IT")
-					continue
 				if os.path.isfile(abpath) :
 					filepath.append(abpath)
 				else :
-					folpath.append(abpath)
+                    continue 
 	except:
 		print("UNKOWN")
 
@@ -50,6 +48,7 @@ filecol(user, folpath,filepath)
 filecol2(folpath,filepath)
 
 print(folpath)
-print(filepath)
+for i in filepath:
+    print(i)
 print("panjang folpath",len(folpath))
 print("panjang filepath", len(filepath))
